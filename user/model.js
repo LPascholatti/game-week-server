@@ -13,6 +13,9 @@ const User = sequelize.define('user', {
   username: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  score: {
+    type: Sequelize.INTEGER
   }
 }, {
   timestamps: false,
