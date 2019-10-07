@@ -7,9 +7,9 @@ const auth = require('./middleware')
 const router = new Router()
 
 router.post('/login', (req, res, next) => {
-  const { email, password } = req.body;
+  const { email, password, username } = req.body;
 
-  if (!email || !password) {
+  if (!email || !password || !username) {
     return res.status(400).send({
       message: 'Please supply a valid email and password'
     })

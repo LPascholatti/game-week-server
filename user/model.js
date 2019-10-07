@@ -10,6 +10,10 @@ const User = sequelize.define('user', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  username: {
+    type: Sequelize.STRING,
+    allowNull: false
+  }
 }, {
   timestamps: false,
   tableName: 'users'
