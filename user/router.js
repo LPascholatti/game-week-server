@@ -17,6 +17,12 @@ router.post('/user', (req, res, next) => {
     .catch(next)
 })
 
+router.get('/user', (req, res, next) => {
+  User
+  .findAll()
+  .then(user => res.json(user))
+  .catch(next)
+})
 
 router.get('/', (request, response )=>{
   console.log("got an get request on /")
