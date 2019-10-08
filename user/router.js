@@ -24,10 +24,10 @@ router.get('/user', (req, res, next) => {
   .catch(next)
 })
 
-router.get('/', (request, response )=>{
+router.get('/', (req, res) => {
   console.log("got an get request on /")
-  response.status(200)
-  response.send("hello world")
+  res.status(200)
+  res.send("hello world")
 })
 
 module.exports = router;
