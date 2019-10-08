@@ -10,7 +10,7 @@ const authRouter = require('./auth/router')
 const roomRouter = require('./room/router')
 const Sse = require('json-sse')
 const Room = require('./room/model')
-//const auth = require('./auth/middleware')
+const auth = require('./auth/middleware')
 
 const stream = new Sse()
 console.log('stream', stream)
@@ -21,7 +21,7 @@ app.use(authRouter)
 app.use(userRouter)
 app.use(roomRouter)
 
-app.get('/stream', async (req, res) => {
+app.get('/stream', auth, async (req, res) => {
   console.log('got a request for a stream')
   const room = await Room.findAll()
   const data = JSON.stringify(room)
