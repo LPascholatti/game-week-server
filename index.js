@@ -8,6 +8,7 @@ const corsMiddleware = cors()
 const userRouter = require('./user/router')
 const authRouter = require('./auth/router')
 const Sse = require('json-sse')
+const User = require('./user/model')
 
 const stream = new Sse()
 console.log('stream', stream)
