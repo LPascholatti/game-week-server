@@ -14,11 +14,6 @@ const User = sequelize.define('user', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  userId: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    unique: true
-  },
   score: {
     type: Sequelize.INTEGER
   }
@@ -28,3 +23,9 @@ const User = sequelize.define('user', {
 })
 
 module.exports = User
+
+// userId: {
+//   type: Sequelize.INTEGER,
+//   allowNull: false,
+//   unique: true
+// },

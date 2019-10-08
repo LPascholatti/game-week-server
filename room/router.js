@@ -5,7 +5,8 @@ const router = new Router()
 router.post('/room', (req, res, next) => {
   const room = {
     gameId: req.body.gameId,
-    userId: req.body.userId
+    playerOneId: req.body.playerOneId,
+    playerTwoId: req.body.playerTwoId
   }
   
   Room
