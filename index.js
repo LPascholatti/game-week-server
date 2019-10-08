@@ -10,6 +10,7 @@ const authRouter = require('./auth/router')
 const roomRouter = require('./room/router')
 const Sse = require('json-sse')
 const Room = require('./room/model')
+//const auth = require('./auth/middleware')
 
 const stream = new Sse()
 console.log('stream', stream)
