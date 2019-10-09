@@ -1,8 +1,9 @@
 const { Router } = require('express')
 const Room = require('./model')
+const auth = require('../auth/middleware')
 const router = new Router()
 
-router.post('/room', (req, res, next) => {
+router.post('/room', auth, (req, res, next) => {
   const room = {
     gameId: req.body.gameId,
     playerOneId: req.body.playerOneId,
