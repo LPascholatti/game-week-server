@@ -13,6 +13,10 @@ router.post('/room', auth, (req, res, next) => {
   Room
   .create(room)
   .then(newRoom => res.json(newRoom))
+  .then(newBoard => {
+    console.log("maybe is", newBoard)
+    Game.create({gameId: newBoard})
+  })
   .catch(next)
 })
 
