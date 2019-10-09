@@ -2,8 +2,8 @@ const Sequelize = require('sequelize')
 const sequelize = require('../db')
 
 const Room = sequelize.define('room', {
-  gameId: {
-    type: Sequelize.INTEGER,
+  roomId: {
+    type: Sequelize.STRING,
     allowNull: false
   },
   playerOneId: {
