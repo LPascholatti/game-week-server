@@ -7,12 +7,10 @@ const Room = sequelize.define('room', {
     allowNull: false
   },
   playerOneId: {
-    type: Sequelize.INTEGER,
-    allowNull: true
+    type: Sequelize.INTEGER
   },
   playerTwoId: {
-    type: Sequelize.INTEGER,
-    allowNull: true
+    type: Sequelize.INTEGER
   }
 }, {
   timestamps: false,
