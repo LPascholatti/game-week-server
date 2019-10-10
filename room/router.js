@@ -3,7 +3,7 @@ const Room = require('./model')
 const auth = require('../auth/middleware')
 const router = new Router()
 
-router.post('/room', auth, (req, res, next) => {
+router.post('/room', (req, res, next) => {
   const room = {
     gameId: req.body.gameId,
     playerOneId: req.body.playerOneId,
@@ -13,10 +13,10 @@ router.post('/room', auth, (req, res, next) => {
   Room
   .create(room)
   .then(newRoom => res.json(newRoom))
-  .then(newBoard => {
-    console.log("maybe is", newBoard)
-    Game.create({gameId: newBoard})
-  })
+  // .then(newBoard => {
+  //   console.log("maybe is", newBoard)
+  //   Game.create({gameId: newBoard})
+  // })
   .catch(next)
 })
 

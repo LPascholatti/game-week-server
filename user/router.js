@@ -6,7 +6,7 @@ const router = new Router()
 router.post('/user', (req, res, next) => {
   console.log('req.body.password/email', req.body.email, req.body.password, req.body.username)
   const user = {
-    email: bcrypt.hashSync(req.body.email, 10),
+    email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 10),
     username: req.body.username,
     userId: req.body.userId
