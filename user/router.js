@@ -25,10 +25,11 @@ router.get('/user', (req, res, next) => {
   .catch(next)
 })
 
-router.get('/', (req, res) => {
-  console.log("got an get request on /")
-  res.status(200)
-  res.send("hello world")
+router.get('/user/:userId', (req, res) => {
+ User
+ .findByPk(req.params.userId)
+ .then(userId => res.status(200).json(userId))
+ .catch(next)
 })
 
 module.exports = router;
