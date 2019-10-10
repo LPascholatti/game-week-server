@@ -25,10 +25,10 @@ router.get('/user', (req, res, next) => {
   .catch(next)
 })
 
-router.get('/user/:userId', (req, res) => {
+router.get('/user/:id', (req, res, next) => {
  User
- .findByPk(req.params.userId)
- .then(userId => res.status(200).json(userId))
+ .findByPk(req.params.id)
+ .then(user => res.status(200).json(user))
  .catch(next)
 })
 
