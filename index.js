@@ -27,7 +27,7 @@ app.get('/stream', async (req, res) => {
   console.log('got a request for a stream')
   const room = await Room.findAll()
   const data = JSON.stringify(room)
-  console.log("messages in this room are:", data)
+  console.log("content in this room are:", data)
 
   stream.updateInit(data)
   stream.init(req, res)
