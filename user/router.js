@@ -8,7 +8,8 @@ router.post('/user', (req, res, next) => {
   const user = {
     email: bcrypt.hashSync(req.body.email, 10),
     password: bcrypt.hashSync(req.body.password, 10),
-    username: req.body.username
+    username: req.body.username,
+    userId: req.body.userId
   }
 
   User
