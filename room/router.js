@@ -4,7 +4,7 @@ const Room = require('./model')
 const router = new Router()
 const Sse = require('json-sse')
 
-router.post('/room',  (req, res, next) => {
+router.post('/room', (req, res, next) => {
   const room = {
     gameId: req.body.gameId,
     playerOneId: req.body.playerOneId,
@@ -13,6 +13,29 @@ router.post('/room',  (req, res, next) => {
   
   Room
   .create(room)
+  .then(newRoom => {
+    console.log('new room', newRoom)
+    res.json(newRoom)
+    return Room.findAll()
+  })
+  .then(room => {
+    console.log('room', room)
+    const data = JSON.stringify(room)
+    console.log("content in this room are:", data)
+    stream.send(data)
+  })
+  .catch(next)
+})
+
+router.put('/room', (req, res, next) => {
+  const room = {
+    gameId: req.body.gameId,
+    playerOneId: req.body.playerOneId,
+    playerTwoId: req.body.playerTwoId
+  }
+  
+  Room
+  .update(room)
   .then(newRoom => {
     console.log('new room', newRoom)
     res.json(newRoom)
