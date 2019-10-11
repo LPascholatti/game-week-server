@@ -28,17 +28,9 @@ router.post('/room', (req, res, next) => {
 })
 
 router.put('/room/:gameId', (req, res, next) => {
-  // const room = {
-  //   gameId: req.body.gameId,
-  //   playerOneId: req.body.playerOneId,
-  //   playerTwoId: req.body.playerTwoId
-  // }
-  
+  console.log("GAMEID", req.body)
+  console.log("GAMEID IN ROOM", typeof req.params.gameId, req.params.gameId)
   Room
-  // .findAll({
-  //   where: {
-  //   gameId: req.params.gameId}
-  // })
   .update( 
     {playerOneId: req.body.playerOneId,
     playerTwoId: req.body.playerTwoId
