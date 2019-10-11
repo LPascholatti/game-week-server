@@ -38,7 +38,7 @@ router.post('/game', (req, res, next) => {
   .catch(next)
 })
 
-router.put('/game', (req, res, next) => {
+router.put('/game/:gameId', (req, res, next) => {
   console.log("req from post  /game ", req.body)
   console.log("req body array", req.body.array[1])
   const game = {
@@ -59,13 +59,6 @@ router.put('/game', (req, res, next) => {
   .then(currentBoard => {
     console.log("currentMove", currentBoard)
     res.json(currentBoard)
-    return Game.findAll()
-  })
-  .then(game => {
-    console.log('game', game)
-    const data = JSON.stringify(game)
-    console.log("content in this game is:", data)
-    stream.send(data)
   })
   .catch(next)
 })

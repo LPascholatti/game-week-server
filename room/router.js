@@ -39,13 +39,6 @@ router.put('/room', (req, res, next) => {
   .then(newRoom => {
     console.log('new room', newRoom)
     res.json(newRoom)
-    return Room.findAll()
-  })
-  .then(room => {
-    console.log('room', room)
-    const data = JSON.stringify(room)
-    console.log("content in this room are:", data)
-    stream.send(data)
   })
   .catch(next)
 })
