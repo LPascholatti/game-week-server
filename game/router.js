@@ -1,6 +1,10 @@
 const { Router } = require('express')
 const Game = require('./model')
+const Sse = require('json-sse')
 const router = new Router()
+
+const stream = new Sse()
+// console.log('stream', stream)
 
 router.post('/game', (req, res, next) => {
   console.log("req from post  /game ", req.body)
@@ -20,8 +24,27 @@ router.post('/game', (req, res, next) => {
   
   Game
   .create(game)
-  .then(currentMove => res.json(currentMove))
+  .then(currentBoard => {
+    console.log("currentMove", currentBoard)
+    res.json(currentBoard)
+    return Game.findAll()
+  })
+  .then(game => {
+    console.log('game', game)
+    const data = JSON.stringify(game)
+    console.log("content in this game is:", data)
+    stream.send(data)
+  })
   .catch(next)
+})
+
+router.get('/stream', async (req, res) => {
+  console.log('got a request for a stream')
+  const game = await Game.findAll()
+  const data = JSON.stringify(game)
+  console.log('content in this game is:', data)
+  stream.updateInit(data)
+  stream.init(req, res)
 })
 
 module.exports = router;
