@@ -39,5 +39,13 @@ router.get('/stream', async (req, res) => {
   stream.init(req, res)
 })
 
+// router.put('/stream', async (req, res) => {
+//   console.log('got a request for a stream')
+//   const room = await Room.update()
+//   const data = JSON.stringify(room)
+//   console.log("content in this room are:", data)
+//   stream.updateInit(data)
+//   stream.init(req, res)
+// })
 
 module.exports = router;

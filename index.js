@@ -8,12 +8,8 @@ const corsMiddleware = cors()
 const userRouter = require('./user/router')
 const authRouter = require('./auth/router')
 const roomRouter = require('./room/router')
-
 const auth = require('./auth/middleware')
 const game = require('./game/router')
-
-
-
 
 app.use(corsMiddleware)
 app.use(jsonParser)
