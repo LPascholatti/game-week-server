@@ -27,6 +27,23 @@ router.post('/room', auth,  (req, res, next) => {
   .catch(next)
 })
 
+router.put('/room/:gameId', (req, res, next) => {
+  console.log("GAMEID", req.body)
+  console.log("GAMEID IN ROOM", typeof req.params.gameId, req.params.gameId)
+  Room
+  .update( 
+    {playerOneId: req.body.playerOneId,
+    playerTwoId: req.body.playerTwoId
+    },
+    {returning: true, where: {gameId: req.params.gameId}
+  })
+  .then(updatedRoom => {
+    console.log('updatedRoom here:', updatedRoom)
+    res.json(updatedRoom)
+  })
+  .catch(next)
+})
+
 const stream = new Sse()
 // console.log('stream', stream)
 
