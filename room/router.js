@@ -27,18 +27,27 @@ router.post('/room', (req, res, next) => {
   .catch(next)
 })
 
-router.put('/room', (req, res, next) => {
-  const room = {
-    gameId: req.body.gameId,
-    playerOneId: req.body.playerOneId,
-    playerTwoId: req.body.playerTwoId
-  }
+router.put('/room/:gameId', (req, res, next) => {
+  // const room = {
+  //   gameId: req.body.gameId,
+  //   playerOneId: req.body.playerOneId,
+  //   playerTwoId: req.body.playerTwoId
+  // }
   
   Room
-  .update(room)
-  .then(newRoom => {
-    console.log('new room', newRoom)
-    res.json(newRoom)
+  // .findAll({
+  //   where: {
+  //   gameId: req.params.gameId}
+  // })
+  .update( 
+    {playerOneId: req.body.playerOneId,
+    playerTwoId: req.body.playerTwoId
+    },
+    {returning: true, where: {gameId: req.params.gameId}
+  })
+  .then(updatedRoom => {
+    console.log('updatedRoom here:', updatedRoom)
+    res.json(updatedRoom)
   })
   .catch(next)
 })
